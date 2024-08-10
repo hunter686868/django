@@ -13,7 +13,7 @@ class Section(models.Model):
     )
 
     class Meta:
-        ordering = ['id'],
+        ordering = 'id',
         verbose_name = 'Раздел',
         verbose_name_plural = 'Разделы'
 
@@ -65,6 +65,7 @@ class Discount(models.Model):
 
     def __str__(self):
         return f'{self.code} ({str(self.value)})'
+
 
 class Order(models.Model):
     need_delivery = models.BooleanField(verbose_name='Необходима доставка')
