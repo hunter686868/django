@@ -107,3 +107,24 @@ class OrderLine(models.Model):
 
     def __str__(self):
         return f'Заказ ({self.order.id}) {self.product.title}: {self.count}'
+
+
+class Article(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Название статьи')
+    abstract = models.TextField(verbose_name='Аннотация')
+    full_text = models.TextField(verbose_name='Текст статьи')
+
+    def __str__(self):
+        return self.title
+
+
+class Comment(models.Model):
+    author = models.CharField(max_length=100, verbose_name='Автор комментария')
+    text = models.TextField(max_length=3000, verbose_name='Текст комментария')
+
+
+class FeedbackMessage(models.Model):
+    author = models.CharField(max_length=100, verbose_name='Автор комментария')
+    text = models.TextField(max_length=3000, verbose_name='Текст комментария')
+    responsible = models.CharField(max_length=100, verbose_name='Ответственный специалист')
+    status = models.BooleanField(verbose_name='Обработано')
