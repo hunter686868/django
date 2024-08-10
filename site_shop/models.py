@@ -93,3 +93,17 @@ class Order(models.Model):
 
     def __str__(self):
         return 'ID' + str(self.id)
+
+
+class OrderLine(models.Model):
+    order = models.ForeignKey(Order, verbose_name='Заказ', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, verbose_name='Товар', on_delete=models.SET_NULL, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена', default=0)
+    count = models.ImageField(verbose_name='Количество', validators=[MinValueValidator(1)], default=1)
+
+    class Meta:
+        verbose_name = 'Строка заказа'
+        verbose_name_plural = 'Строки заказов'
+
+    def __str__(self):
+        return f'Заказ ({self.order.id}) {self.product.title}: {self.count}'
