@@ -52,7 +52,7 @@ class Product(models.Model):
 
 class Discount(models.Model):
     code = models.CharField(max_length=10, verbose_name='Код купона')
-    value = models.ImageField(
+    value = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(100)],
         verbose_name='Размер скидки',
         help_text='В процентах'
