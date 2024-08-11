@@ -115,11 +115,16 @@ class Article(models.Model):
     abstract = models.TextField(verbose_name='Аннотация')
     full_text = models.TextField(verbose_name='Текст статьи')
 
+    class Meta:
+        verbose_name = 'Статья'
+        verbose_name_plural = 'Статьи'
+
     def __str__(self):
         return self.title
 
 
 class Comment(models.Model):
+    article = models.ForeignKey(Article, verbose_name='Статья', on_delete=models.SET_NULL, null=True)
     author = models.CharField(max_length=100, verbose_name='Автор комментария')
     text = models.TextField(max_length=3000, verbose_name='Текст комментария')
 
