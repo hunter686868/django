@@ -14,3 +14,4 @@ admin.site.register(Photo)
 admin.site.register(Article)
 admin.site.register(Comment)
 admin.site.register(FeedbackMessage)
+

@@ -1,8 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
-# Create your models here.
-
 
 class Section(models.Model):
     title = models.CharField(
@@ -13,8 +11,8 @@ class Section(models.Model):
     )
 
     class Meta:
-        ordering = 'id',
-        verbose_name = 'Раздел',
+        ordering = ('id',)
+        verbose_name = 'Раздел'
         verbose_name_plural = 'Разделы'
 
     def __str__(self):
@@ -85,7 +83,7 @@ class Order(models.Model):
         ('CNL', 'Отменен')
     ]
 
-    status = models.CharField(choices=STATUSES, max_length=3, default=STATUSES[0], verbose_name='Статус заказа')
+    status = models.CharField(choices=STATUSES, max_length=3, default='NEW', verbose_name='Статус заказа')
 
     class Meta:
         ordering = ['-date_order']
@@ -93,14 +91,14 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return 'ID' + str(self.id)
+        return f'ID {self.id}'
 
 
 class OrderLine(models.Model):
     order = models.ForeignKey(Order, verbose_name='Заказ', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name='Товар', on_delete=models.SET_NULL, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена', default=0)
-    count = models.ImageField(verbose_name='Количество', validators=[MinValueValidator(1)], default=1)
+    count = models.IntegerField(verbose_name='Количество', validators=[MinValueValidator(1)], default=1)
 
     class Meta:
         verbose_name = 'Строка заказа'
@@ -112,10 +110,12 @@ class OrderLine(models.Model):
 
 class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название статьи')
+    author = models.CharField(max_length=100, verbose_name='Автор комментария', null=True)
     abstract = models.TextField(verbose_name='Аннотация')
     full_text = models.TextField(verbose_name='Текст статьи')
 
     class Meta:
+        ordering = ['title']
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 
@@ -128,9 +128,16 @@ class Comment(models.Model):
     author = models.CharField(max_length=100, verbose_name='Автор комментария')
     text = models.TextField(max_length=3000, verbose_name='Текст комментария')
 
+    def __str__(self):
+        return f'Комментарий от {self.author} к статье {self.article}'
+
 
 class FeedbackMessage(models.Model):
     author = models.CharField(max_length=100, verbose_name='Автор комментария')
     text = models.TextField(max_length=3000, verbose_name='Текст комментария')
     responsible = models.CharField(max_length=100, verbose_name='Ответственный специалист')
     status = models.BooleanField(verbose_name='Обработано')
+
+    class Meta:
+        verbose_name = 'Сообщения поддержке'
+        verbose_name_plural = 'Сообщения поддержке'
