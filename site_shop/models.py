@@ -111,6 +111,7 @@ class OrderLine(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название статьи')
     author = models.CharField(max_length=100, verbose_name='Автор комментария', null=True)
+    date = models.DateField(verbose_name='Дата написания', null=True)
     abstract = models.TextField(verbose_name='Аннотация')
     full_text = models.TextField(verbose_name='Текст статьи')
 
