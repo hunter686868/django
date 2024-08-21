@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+{% load static %}
 <head>
-	<title>Интернет-магазин</title>
+	{% block title %}<title>Магазин</title>{% endblock %}
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="description" content="Интернет-магазин по продаже DVD-дисков." />
+	{% block description %}
+		<meta name="description" content="Интернет-магазин по продаже DVD-дисков." />
+	{% endblock %}
 	<meta name="keywords" content="интернет магазин, интернет магазин dvd, интернет магазин dvd диски" />
-	<link rel="stylesheet" href="styles/main.css" type="text/css" />
-	<script type="text/javascript" src="js/functions.js"></script>
-	<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+	<link rel="stylesheet" href="{% static 'styles/main.css' %}" type="text/css" />
+	<script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+	<link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
 	<div id="container">
 		<div id="header">
-			<img src="images/header.png" alt="Шапка" />
+			<img src="{% static 'images/header.png' %}" alt="Шапка" />
 			<div>
 				<p class="red">8-800-123-45-67</p>
 				<p class="blue">Время работы с 09:00 до 21:00<br />без перерыва и выходных</p>
@@ -27,16 +30,16 @@
 		<div id="topmenu">
 			<ul>
 				<li>
-					<a href="https://storedvd.ru/">ГЛАВНАЯ</a>
+					<a href="{% url 'index %}">ГЛАВНАЯ</a>
 				</li>
 				<li>
-					<img src="images/topmenu_border.png" alt="" />
+					<img src="{% static 'images/topmenu_border.png' %}" alt="" />
 				</li>
 				<li>
 					<a href="https://storedvd.ru/delivery">ОПЛАТА И ДОСТАВКА</a>
 				</li>
 				<li>
-					<img src="images/topmenu_border.png" alt="" />
+					<img src="{% static 'images/topmenu_border.png' %}" alt="" />
 				</li>
 				<li>
 					<a href="https://storedvd.ru/contacts">КОНТАКТЫ</a>
@@ -69,159 +72,13 @@
 													<p >
 								<a href="https://storedvd.ru/section?id=2">Исторические</a>
 							</p>
-													<p >
-								<a href="https://storedvd.ru/section?id=3">Мелодрамы</a>
-							</p>
-													<p >
-								<a href="https://storedvd.ru/section?id=4">Триллеры</a>
-							</p>
-													<p class="last">
-								<a href="https://storedvd.ru/section?id=5">Боевики</a>
-							</p>
 											</div>
 					<div class="bottom"></div>
 				</div>
 			</div>
 			<div id="right">
-				<table>
-	<tr>
-		<td rowspan="2">
-			<div class="header">
-				<h3>Новинки</h3>
+				{% block content %}{% endblock %}
 			</div>
-		</td>
-		<td class="section_bg"></td>
-		<td class="section_right"></td>
-	</tr>
-	<tr>
-		<td colspan="2">
-			<table class="sort">
-				<tr>
-					<td>Сортировать по:</td>
-					<td>цене (<a href="https://storedvd.ru/?sort=price&amp;up=1">возр.</a> | <a href="https://storedvd.ru/?sort=price&amp;up=0">убыв.</a>)
-					<td>названию (<a href="https://storedvd.ru/?sort=title&amp;up=1">возр.</a> | <a href="https://storedvd.ru/?sort=title&amp;up=0">убыв.</a>)
-				</tr>
-			</table>
-		</td>
-	</tr>
-</table><table class="products">
-					<tr>
-						<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/who-am-i.jpg" alt="Кто я?" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=16">Кто я?</a>
-					</p>
-					<p class="price">349 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=16"></a>
-					</p>
-				</div>
-			</td>
-							<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/rush-hour.jpg" alt="Час пик" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=15">Час пик</a>
-					</p>
-					<p class="price">199 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=15"></a>
-					</p>
-				</div>
-			</td>
-							<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/rush-hour-2.jpg" alt="Час пик 2" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=14">Час пик 2</a>
-					</p>
-					<p class="price">200 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=14"></a>
-					</p>
-				</div>
-			</td>
-							<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/fei-ying.jpg" alt="Доспехи Бога 2" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=13">Доспехи Бога 2</a>
-					</p>
-					<p class="price">290 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=13"></a>
-					</p>
-				</div>
-			</td>
-							</tr>
-								<tr>
-						<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/fifth-element.jpg" alt="Пятый элемент" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=12">Пятый элемент</a>
-					</p>
-					<p class="price">225 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=12"></a>
-					</p>
-				</div>
-			</td>
-							<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/snatch.jpg" alt="Большой куш" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=10">Большой куш</a>
-					</p>
-					<p class="price">410 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=10"></a>
-					</p>
-				</div>
-			</td>
-							<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/butterfly.jpg" alt="Эффект бабочки" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=11">Эффект бабочки</a>
-					</p>
-					<p class="price">299 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=11"></a>
-					</p>
-				</div>
-			</td>
-							<td>
-				<div class="intro_product">
-					<p class="img">
-						<img src="https://storedvd.ru/images/products/lock-stock.jpg" alt="Карты, деньги, два ствола" />
-					</p>
-					<p class="title">
-						<a href="https://storedvd.ru/product?id=9">Карты, деньги, два ствола</a>
-					</p>
-					<p class="price">350 руб.</p>
-					<p>
-						<a class="link_cart" href="https://storedvd.ru/functions.php?func=add_cart&amp;id=9"></a>
-					</p>
-				</div>
-			</td>
-							</tr>
-				</table>			</div>
 			<div class="clear"></div>
 			<div id="footer">
 				<div id="pm">
@@ -229,7 +86,7 @@
 						<tr>
 							<td>Способы оплаты:</td>
 							<td>
-								<img src="images/pm.png" alt="Способы оплаты" />
+								<img src="{% static 'images/pm.png' %}" alt="Способы оплаты" />
 							</td>
 						</tr>
 					</table>
