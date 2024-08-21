@@ -1,13 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-# Create your views here.
+from site_shop.models import Section
 
 
 def index(request):
+    sections = Section.objects.all().order_by('title')
     return render(
         request,
-        'index.html'
+        'index.html',
+        context={'sections': sections}
     )
 
 
