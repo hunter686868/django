@@ -9,3 +9,7 @@ def index(request):
         request,
         'main.html'
     )
+
+
+def test_view(request):
+    return HttpResponse("Это тестовая страница")
