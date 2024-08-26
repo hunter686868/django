@@ -142,3 +142,4 @@ class FeedbackMessage(models.Model):
     class Meta:
         verbose_name = 'Сообщения поддержке'
         verbose_name_plural = 'Сообщения поддержке'
+
