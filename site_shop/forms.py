@@ -2,4 +2,9 @@ from django import forms
 
 
 class SearchForm(forms.Form):
-    q = forms.CharField()
+    q = forms.CharField(
+        widget=forms.TextInput(
+            attrs={'placeholder': 'Search'}
+        )
+    )
+
