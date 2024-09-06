@@ -44,7 +44,7 @@ def search(request):
         photos = Photo.objects.filter(
             Q(title__icontains=q) | Q(description__icontains=q)
         )
-        context = {'photos':photos, 'q': q}
+        context = {'photos': photos, 'q': q}
         return render(
             request,
             'search.htmp',
