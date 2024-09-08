@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -47,6 +48,6 @@ def search(request):
         context = {'photos': photos, 'q': q}
         return render(
             request,
-            'search.htmp',
+            'search.html',
             context=context
         )
